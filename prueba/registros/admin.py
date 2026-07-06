@@ -11,6 +11,17 @@ class AdministrarModelo(admin.ModelAdmin):
     date_hierarchy = 'created'
     list_filter = ('carrera', 'turno') #Activa un panel lateral derecho para filtrar los registros por campos específicos (fechas, booleanos, llaves foráneas).
     list_editable = ('nombre', 'turno')
+
+    def get_readonly_fields(self, request, obj=None):
+        #si el usuario pertenecene a usuarios se le da permisos
+        if request.user.groups.filter(name="Usuarios").exists():
+            #bloquea los campos
+            return ('matricula', 'carrera', 'turno')
+            #Cualquier otro usuario que no pertenezca a usuarios tendra permisos de edicion
+        else:
+            #bloquea los campos
+            return ('created', 'updated')
+        
 admin.site.register(Alumnos, AdministrarModelo)
 
 class AdministrarComentario(admin.ModelAdmin):
