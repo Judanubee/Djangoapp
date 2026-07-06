@@ -31,6 +31,7 @@ path("contacto/", views_registros.registrar, name="contacto"),
     path("ejemplo/",views.ejemplo, name="ejemplo"),
     path("registrar/", views_registros.registrar, name="Registrar"),
     path('', views_registros.registros, name='principal'),
+    path("comentarios/",views_registros.consultar_comentarios, name ="consultar_comentarios")
     
 ]
 
