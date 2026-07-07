@@ -18,10 +18,12 @@ class AdministrarModelo(admin.ModelAdmin):
             #bloquea los campos
             return ('matricula', 'carrera', 'turno')
             #Cualquier otro usuario que no pertenezca a usuarios tendra permisos de edicion
+        elif request.user.groups.filter(name="gestor alumnos").exists():
+            #bloquea los campos
+            return ('matricula', 'turno')
         else:
             #bloquea los campos
             return ('created', 'updated')
-        
 admin.site.register(Alumnos, AdministrarModelo)
 
 class AdministrarComentario(admin.ModelAdmin):
