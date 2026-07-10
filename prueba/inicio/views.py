@@ -6,8 +6,6 @@ def principal(request):
         "user_text": "lajlskdjaslk",
         "user_subtext": "DGS",
         "user_img": "inicio/images/home.png"}
-    
-
     return render(request, "registros/principal.html", contexto)
 
 def nuevo(request):

@@ -41,8 +41,12 @@
                 <tr>
                     <td>{{ comentario.usuario }}</td>
                     <td>{{ comentario.mensaje }}</td>
-                    <td class="text-center">Editar</td>
-                    <td class="text-center">Eliminar</td>
+                    <td class="text-center">
+                        <a href="{% url 'Editar' comentario.id %}">Editar</a>
+                    </td>
+                    <td class="text-center">
+                        <a href="{% url 'Eliminar' comentario.id %}">Eliminar</a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
