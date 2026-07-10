@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Alumnos, ComentarioContacto #Accedemos al modelo Alumnos que contiene la estructura de la tabla.
 from .models import Comentario
 from .forms import ComentarioContactoForm
+
 
 # Create your views here.
 def registros(request):
@@ -33,3 +34,14 @@ def consultar_comentarios(request):
         "registros/consultar_comentarios.html",
         {"comentarios": comentarios}
     )
+
+def eliminarComentarioContacto(request, id, confirmacion='registros/confirmarEliminacion.html'):
+    comentario = get_object_or_404(ComentarioContacto, id=id)
+    if request.method == 'POST':
+        comentario.delete()
+        comentarios = ComentarioContacto.objects.all()
+        return render(request, "registros/consultar_comentarios.html", {'comentarios': comentarios})
+    return render(request, confirmacion, {'comentario': comentario})
+
+def editarComentarioContacto(request, id):
+    return render(request, "registros/editarComentario.html")

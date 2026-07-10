@@ -26,12 +26,15 @@ from registros import views as views_registros
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("juda/",views.nuevo, name="nuevo"),
-path("contacto/", views_registros.registrar, name="contacto"),
+    path("contacto/", views_registros.registrar, name="contacto"),
     path("formulario/",views.formulario, name="formulario"),
     path("ejemplo/",views.ejemplo, name="ejemplo"),
     path("registrar/", views_registros.registrar, name="Registrar"),
     path('', views_registros.registros, name='principal'),
-    path("comentarios/",views_registros.consultar_comentarios, name ="consultar_comentarios")
+    path("comentarios/",views_registros.consultar_comentarios, name ="consultar_comentarios"),
+    path('eliminarComentario/<int:id>/', views_registros.eliminarComentarioContacto, name='Eliminar'),#si necesitas mas tipos de datos volvemos a poner <>/
+    path('editarComentario/<int:id>/', views_registros.editarComentarioContacto, name='Editar'),
+
     
 ]
 
