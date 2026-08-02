@@ -44,4 +44,20 @@ def eliminarComentarioContacto(request, id, confirmacion='registros/confirmarEli
     return render(request, confirmacion, {'comentario': comentario})
 
 def editarComentarioContacto(request, id):
-    return render(request, "registros/editarComentario.html")
+    comentario = get_object_or_404(ComentarioContacto, id=id)
+
+    if request.method == "POST":
+        form = ComentarioContactoForm(request.POST, instance=comentario)
+        if form.is_valid():
+            form.save()
+            comentarios = ComentarioContacto.objects.all()
+            return render(
+                request,
+                "registros/consultar_comentarios.html",
+                {"comentarios": comentarios})
+    else:
+        form = ComentarioContactoForm(instance=comentario)
+    return render(
+        request,
+        "registros/editarComentario.html",
+        {"form": form,"comentario": comentario})
