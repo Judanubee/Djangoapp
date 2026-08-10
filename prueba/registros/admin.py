@@ -6,7 +6,7 @@ from .models import ComentarioContacto
 # Register your models here.
 class AdministrarModelo(admin.ModelAdmin):
     readonly_fields = ('created', 'updated') #Campos que se muestran pero no se pueden modificar
-    list_display = ('matricula', 'nombre', 'carrera', 'turno') #Una tupla o lista con los nombres de los campos que quieres que aparezcan como columnas.
+    list_display = ('matricula', 'nombre', 'carrera', 'turno', 'created') #Una tupla o lista con los nombres de los campos que quieres que aparezcan como columnas.
     search_fields = ('matricula', 'nombre', 'carrera', 'turno') #Habilita una barra de búsqueda.
     date_hierarchy = 'created'
     list_filter = ('carrera', 'turno') #Activa un panel lateral derecho para filtrar los registros por campos específicos (fechas, booleanos, llaves foráneas).

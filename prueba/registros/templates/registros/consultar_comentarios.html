@@ -41,6 +41,7 @@
                 <tr>
                     <td>{{ comentario.usuario }}</td>
                     <td>{{ comentario.mensaje }}</td>
+                    <td>{{ comentario.created }}</td>
                     <td class="text-center">
                         <a href="{% url 'Editar' comentario.id %}">Editar</a>
                     </td>
