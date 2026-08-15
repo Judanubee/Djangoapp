@@ -26,13 +26,31 @@ from registros import views as views_registros
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("juda/",views.nuevo, name="nuevo"),
-path("contacto/", views_registros.registrar, name="contacto"),
+    path("contacto/", views_registros.registrar, name="contacto"),
     path("formulario/",views.formulario, name="formulario"),
     path("ejemplo/",views.ejemplo, name="ejemplo"),
     path("registrar/", views_registros.registrar, name="Registrar"),
     path('', views_registros.registros, name='principal'),
-    path("comentarios/",views_registros.consultar_comentarios, name ="consultar_comentarios")
-    
+    path("comentarios/",views_registros.consultar_comentarios, name ="consultar_comentarios"),
+    path('eliminarComentario/<int:id>/', views_registros.eliminarComentarioContacto, name='Eliminar'),#si necesitas mas tipos de datos volvemos a poner <>/
+    path('editarComentario/<int:id>/', views_registros.editarComentarioContacto, name='Editar'),
+    path("consultas/", views_registros.Consultas, name="consultas"),
+
+    path("consultas1/", views_registros.consultar1, name="Consultas"),
+    path("consultas2/", views_registros.consultar2, name="Consultas"),
+    path("consultas3/", views_registros.consultar3, name="Consultas"),
+    path("consultas4/", views_registros.consultar4, name="Consultas"),
+    path("consultas5/", views_registros.consultar5, name="Consultas"),
+    path("consultas6/", views_registros.consultar6, name="Consultas"),
+    path("consultas7/", views_registros.consultar7, name="Consultas"),
+    path("consultas8/", views_registros.consultar8, name="Consultas"),
+    path("comentariosFechaORM/", views_registros.comentariosFechaORM, name="consultarComentariosFecha"),
+    path("comentariosExpresionORM/", views_registros.comentariosExpresionORM, name="consultarComentariosExpresion"),
+    path("comentariosUsuarioORM/", views_registros.comentariosUsuarioORM, name="consultarComentariosUsuario"),
+
+    path("subir", views_registros.archivos, name="subir"),
+
+        
 ]
 
 if settings.DEBUG:
